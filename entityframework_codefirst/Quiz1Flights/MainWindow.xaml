@@ -1,0 +1,41 @@
+﻿<Window x:Class="Quiz1Flights.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quiz1Flights"
+        mc:Ignorable="d"
+       Title="Flights Manager" 
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize" 
+        MaxHeight="800"
+        WindowStartupLocation="CenterScreen"
+        ContentRendered="Window_ContentRendered">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btAdd" Click="btAdd_Click" Content="Add" Width="75" Height="30"/>
+        </StackPanel>
+        <ListView Grid.Row="1" Margin="5" Name="lvFlights" ItemsSource="{Binding}" MouseDoubleClick="lvFlights_MouseDoubleClick" SelectionMode="Single">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete" Click="DeleteMenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="250" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="On day" Width="150" DisplayMemberBinding="{Binding OnDay}" />
+                    <GridViewColumn Header="From code" Width="150" DisplayMemberBinding="{Binding FromCode}" />
+                    <GridViewColumn Header="To code" Width="150"   DisplayMemberBinding="{Binding ToCode}"/>
+                    <GridViewColumn Header="Type flight" Width="150"   DisplayMemberBinding="{Binding TypeFlight}"/>
+                    <GridViewColumn Header="Passenger" Width="150"   DisplayMemberBinding="{Binding Passenger}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
